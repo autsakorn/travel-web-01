@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing
+  pre_build:
+    commands:
+      - echo Deployment started on `date`
+      - echo Syncing S3 Content
+  build:
+    commands:
+      - aws s3 sync ./files/ s3://travel-web-01-v1
+  post_build:
+    commands:
+      - echo End Sync S3 Content
